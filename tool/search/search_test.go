@@ -36,3 +36,18 @@ func TestBingSearch(t *testing.T) {
 	}
 	t.Log(ret)
 }
+
+func TestBaiduSearch(t *testing.T) {
+	tool, _ := New(
+		WithEngine("baidu"),
+		WithApiKey(apiKey),
+		WithTopK(10),
+	)
+	ret, err := tool.Call(context.Background(), `{
+	"query": "ai"
+}`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(ret)
+}
